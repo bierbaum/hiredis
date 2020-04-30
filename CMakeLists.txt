@@ -39,7 +39,7 @@ IF(WIN32)
     ADD_COMPILE_DEFINITIONS(_CRT_SECURE_NO_WARNINGS WIN32_LEAN_AND_MEAN)
 ENDIF()
 
-ADD_LIBRARY(hiredis SHARED ${hiredis_sources})
+ADD_LIBRARY(hiredis ${hiredis_sources})
 
 SET_TARGET_PROPERTIES(hiredis
     PROPERTIES WINDOWS_EXPORT_ALL_SYMBOLS TRUE
@@ -96,7 +96,7 @@ IF(ENABLE_SSL)
     FIND_PACKAGE(OpenSSL REQUIRED)
     SET(hiredis_ssl_sources 
         ssl.c)
-    ADD_LIBRARY(hiredis_ssl SHARED
+    ADD_LIBRARY(hiredis_ssl
             ${hiredis_ssl_sources})
 
     IF (APPLE)
